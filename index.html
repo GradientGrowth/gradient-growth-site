@@ -4,425 +4,489 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gradient Growth</title>
+  <meta name="description" content="Gradient Growth aligns finance, leadership, and culture to drive measurable business performance." />
 
   <style>
     :root{
+      --navy:#0b1f33;
+      --navy2:#0f2b45;
+      --teal:#2f6f8f;
+      --teal2:#3b8aa7;
+      --gold:#c8a96a;
       --ink:#0f172a;
       --muted:#5b6673;
-      --muted2:#6b7280;
-      --navy:#0b1f3a;
-      --teal:#2f6f8f;
-      --bg1:#f5f7f8;
-      --bg2:#ffffff;
       --card:#ffffff;
-      --border:#e9edf2;
-      --shadow:0 18px 48px rgba(15,23,42,.10);
-      --shadow2:0 10px 26px rgba(15,23,42,.08);
-      --radius:16px;
+      --border:rgba(15,23,42,.10);
+      --shadow:0 18px 50px rgba(15,23,42,.10);
+      --shadow2:0 10px 28px rgba(15,23,42,.10);
+      --radius:18px;
+      --max:1120px;
     }
 
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(47,111,143,.10), rgba(255,255,255,0) 55%),
-        radial-gradient(900px 500px at 80% 20%, rgba(15,23,42,.07), rgba(255,255,255,0) 55%),
-        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 60%);
+        radial-gradient(1200px 600px at 15% 10%, rgba(200,169,106,.22), transparent 60%),
+        radial-gradient(900px 500px at 90% 15%, rgba(47,111,143,.18), transparent 55%),
+        linear-gradient(180deg, #f6f3ee 0%, #f6f7fb 35%, #ffffff 100%);
     }
 
-    a{ color:inherit; text-decoration:none; }
-    .wrap{ max-width:1120px; margin:0 auto; padding:28px 22px 64px; }
-
-    /* Top nav */
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px;}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(246,243,238,.72);
+      border-bottom:1px solid rgba(15,23,42,.06);
+    }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:10px 0 26px;
+      padding:14px 0;
+      gap:16px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px;
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
     }
-    .mark{
-      width:30px; height:30px; border-radius:10px;
-      background: linear-gradient(135deg, rgba(47,111,143,.95), rgba(15,23,42,.95));
-      box-shadow: 0 10px 24px rgba(15,23,42,.18);
+    .brand img{width:34px;height:34px;display:block}
+    .brand span{font-size:16px; color:var(--navy)}
+    .menu{
+      display:flex; align-items:center; gap:18px;
+      color:rgba(15,23,42,.70);
+      font-size:14px;
     }
-    .brand span{ font-size:16px; }
-    .navlinks{ display:flex; gap:18px; color:var(--muted); font-size:14px; }
-    .navlinks a{ padding:8px 10px; border-radius:10px; }
-    .navlinks a:hover{ background:rgba(255,255,255,.65); }
-
+    .menu a{padding:8px 10px;border-radius:10px}
+    .menu a:hover{background:rgba(15,23,42,.05)}
     .cta{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 16px; border-radius:12px; font-weight:650;
-      color:#fff; background:linear-gradient(135deg, var(--navy), rgba(47,111,143,.95));
-      box-shadow: 0 16px 34px rgba(15,23,42,.18);
-      border:1px solid rgba(255,255,255,.18);
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(15,23,42,.10);
+      background:linear-gradient(180deg, #ffffff 0%, #f1f4f8 100%);
+      color:var(--navy);
+      box-shadow:0 10px 24px rgba(15,23,42,.10);
+      font-weight:650;
+      font-size:14px;
       white-space:nowrap;
     }
-    .cta:hover{ filter:brightness(1.03); transform: translateY(-1px); }
-    .cta:active{ transform: translateY(0); }
+    .cta:hover{transform:translateY(-1px)}
+    .cta:active{transform:translateY(0)}
 
     /* Hero */
     .hero{
+      padding:56px 0 22px;
+    }
+    .heroGrid{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:26px;
+      grid-template-columns: 1.25fr .9fr;
+      gap:22px;
       align-items:stretch;
-      margin-top:6px;
     }
     .heroCard{
-      background: rgba(255,255,255,.68);
-      border: 1px solid rgba(233,237,242,.8);
-      border-radius: calc(var(--radius) + 6px);
-      box-shadow: var(--shadow2);
-      padding: 34px 30px;
-      backdrop-filter: blur(8px);
-    }
-    .kicker{
-      font-size:13px; color:var(--muted2); letter-spacing:.12em; text-transform:uppercase;
-      margin:0 0 10px;
-    }
-    h1{
-      font-size:46px;
-      line-height:1.08;
-      margin:0 0 14px;
-      letter-spacing:-.02em;
-    }
-    .subhead{
-      font-size:18px;
-      line-height:1.6;
-      color:var(--muted);
-      margin:0 0 12px;
-      max-width: 44rem;
-    }
-    .micro{
-      font-size:14px;
-      color:rgba(47,111,143,.95);
-      font-weight:650;
-      margin:0 0 20px;
-    }
-    .heroActions{ display:flex; gap:12px; flex-wrap:wrap; margin-top:10px; }
-    .ghost{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 16px; border-radius:12px;
-      border:1px solid rgba(15,23,42,.14);
-      background: rgba(255,255,255,.72);
-      color: var(--ink);
-      font-weight:650;
-      white-space:nowrap;
-    }
-    .ghost:hover{ background:#fff; }
-
-    .heroVisual{
-      border-radius: calc(var(--radius) + 6px);
-      border: 1px solid rgba(233,237,242,.85);
-      box-shadow: var(--shadow2);
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(15,23,42,.08);
+      border-radius:24px;
+      box-shadow:var(--shadow);
       overflow:hidden;
-      background:
-        radial-gradient(800px 420px at 30% 10%, rgba(47,111,143,.16), rgba(255,255,255,0) 60%),
-        radial-gradient(700px 380px at 80% 20%, rgba(15,23,42,.10), rgba(255,255,255,0) 58%),
-        linear-gradient(135deg, rgba(255,255,255,.70), rgba(255,255,255,.55));
       position:relative;
-      min-height: 255px;
+      min-height:310px;
     }
-    .heroVisual::after{
+    .heroCard::before{
       content:"";
       position:absolute; inset:0;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0) 35%),
-        radial-gradient(900px 360px at 70% 60%, rgba(47,111,143,.08), rgba(255,255,255,0) 60%);
+        radial-gradient(700px 280px at 10% 10%, rgba(200,169,106,.18), transparent 60%),
+        radial-gradient(700px 280px at 90% 20%, rgba(47,111,143,.14), transparent 60%);
       pointer-events:none;
     }
-    .visualText{
-      position:absolute; left:22px; bottom:20px;
+    .heroInner{
+      position:relative;
+      padding:28px 28px 26px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      align-items:center;
+    }
+    .kicker{
+      font-size:12px;
+      letter-spacing:.14em;
+      color:rgba(15,23,42,.55);
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    h1{
+      font-size:44px;
+      line-height:1.08;
+      margin:0 0 12px;
+      color:var(--navy);
+      letter-spacing:-.02em;
+    }
+    .headlineUnderline{
+      width:86px;height:3px;border-radius:999px;
+      background:linear-gradient(90deg, var(--gold), var(--teal2));
+      margin:10px 0 14px;
+    }
+    .sub{
+      font-size:16.5px;
+      line-height:1.6;
       color:rgba(15,23,42,.72);
-      font-size:13px;
-      background: rgba(255,255,255,.65);
-      border: 1px solid rgba(233,237,242,.9);
-      padding:10px 12px;
-      border-radius: 12px;
-      backdrop-filter: blur(8px);
-      max-width: 78%;
+      max-width:520px;
+      margin:0 0 14px;
     }
-
-    /* Framework */
-    .section{
-      margin-top:38px;
-      padding-top:6px;
-    }
-    .sectionHeader{
-      text-align:center;
-      margin: 16px 0 18px;
-    }
-    .sectionHeader h2{
-      font-size:34px;
-      margin:0 0 8px;
-      letter-spacing:-.01em;
-    }
-    .tagline{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
+    .sub2{
+      font-size:14.5px;
+      line-height:1.6;
+      color:rgba(15,23,42,.62);
+      margin:0 0 18px;
       font-weight:600;
     }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap:16px;
-      margin-top:22px;
+    .heroActions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top:6px;
     }
-    .card{
-      background: rgba(255,255,255,.82);
-      border: 1px solid rgba(233,237,242,.92);
-      border-radius: var(--radius);
-      padding:18px 16px 16px;
-      box-shadow: 0 12px 34px rgba(15,23,42,.08);
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      position:relative;
-      min-height: 200px;
-      display:flex;
-      flex-direction:column;
+    .btnPrimary{
+      display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
+      padding:12px 16px;
+      border-radius:12px;
+      background:linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%);
+      color:#fff;
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 14px 30px rgba(11,31,51,.20);
+      font-weight:700;
+      font-size:14.5px;
+      cursor:pointer;
     }
-    .card:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 22px 52px rgba(15,23,42,.14);
-      border-color: rgba(47,111,143,.30);
+    .btnPrimary:hover{filter:brightness(1.03); transform:translateY(-1px)}
+    .btnSecondary{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      background:rgba(255,255,255,.80);
+      border:1px solid rgba(15,23,42,.12);
+      box-shadow:0 10px 22px rgba(15,23,42,.10);
+      color:var(--navy);
+      font-weight:700;
+      font-size:14.5px;
+      cursor:pointer;
     }
-    .icon{
-      width:22px; height:22px;
-      border-left:2px solid rgba(47,111,143,.95);
-      border-bottom:2px solid rgba(47,111,143,.95);
-      transform: rotate(-45deg);
-      opacity:.95;
-      margin-bottom:2px;
+    .btnSecondary:hover{transform:translateY(-1px)}
+    .heroImage{
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,.10);
+      overflow:hidden;
+      height:250px;
+      background:
+        linear-gradient(0deg, rgba(11,31,51,.20), rgba(11,31,51,.10)),
+        url("hero.jpg");
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--shadow2);
     }
-    .card h3{
+    .noteCard{
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(15,23,42,.08);
+      border-radius:24px;
+      box-shadow:var(--shadow2);
+      padding:22px 22px;
+      display:flex; flex-direction:column; justify-content:center;
+      min-height:310px;
+    }
+    .noteCard p{
       margin:0;
-      font-size:16px;
-      letter-spacing:-.01em;
+      color:rgba(15,23,42,.70);
+      line-height:1.6;
+      font-size:14.5px;
     }
-    .card p{
+
+    /* Section headings */
+    .section{
+      padding:28px 0 10px;
+    }
+    .center{
+      text-align:center;
+    }
+    h2{
       margin:0;
-      color:var(--muted);
+      font-size:34px;
+      color:var(--navy);
+      letter-spacing:-.02em;
+    }
+    .tag{
+      margin-top:8px;
+      color:rgba(15,23,42,.60);
+      font-size:15px;
+      font-weight:650;
+    }
+
+    /* Pillars */
+    .pillars{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:16px;
+    }
+    .pillar{
+      background:rgba(255,255,255,.78);
+      border:1px solid rgba(15,23,42,.10);
+      border-radius:18px;
+      box-shadow:0 14px 34px rgba(15,23,42,.10);
+      padding:18px 16px 16px;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .pillar::before{
+      content:"";
+      position:absolute;
+      inset:-40px -40px auto auto;
+      width:140px;height:140px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 30%, rgba(200,169,106,.22), transparent 60%);
+      transform:rotate(12deg);
+      pointer-events:none;
+    }
+    .pillar:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 54px rgba(15,23,42,.14);
+      border-color:rgba(47,111,143,.22);
+    }
+
+    /* unique thin icons (no images needed) */
+    .ic{
+      width:26px;height:26px;margin-bottom:12px;position:relative;
+    }
+    .ic svg{width:26px;height:26px;display:block}
+    .pillar h3{
+      margin:0 0 8px;
+      font-size:15.5px;
+      color:var(--navy);
+      line-height:1.25;
+    }
+    .pillar p{
+      margin:0 0 12px;
       font-size:13.5px;
       line-height:1.55;
-      flex:1;
+      color:rgba(15,23,42,.68);
+      min-height:62px;
     }
     .explore{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      font-weight:700;
       color:var(--teal);
+      font-weight:800;
       font-size:13.5px;
-      margin-top:4px;
     }
-    .explore .arrow{
-      transition: transform .18s ease;
-    }
-    .card:hover .explore .arrow{ transform: translateX(3px); }
 
-    /* Mid-section */
-    .split{
-      margin-top:34px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:18px;
-      align-items:stretch;
+    /* Mid CTA band */
+    .band{
+      margin:34px 0 0;
+      padding:26px 0 0;
     }
-    .panel{
-      background: rgba(255,255,255,.78);
-      border:1px solid rgba(233,237,242,.92);
-      border-radius: calc(var(--radius) + 4px);
-      box-shadow: var(--shadow2);
-      padding:26px 24px;
+    .ctaBand{
+      background:rgba(255,255,255,.70);
+      border:1px solid rgba(15,23,42,.08);
+      border-radius:24px;
+      box-shadow:var(--shadow2);
+      padding:22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
     }
-    .panel h3{
-      margin:0 0 10px;
-      font-size:26px;
-      letter-spacing:-.01em;
-    }
-    .panel p{
-      margin:0 0 14px;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:15px;
-    }
-    .panelTitle{
-      font-weight:750;
-      color:var(--ink);
-      margin:0 0 6px;
+    .ctaBand strong{
+      color:var(--navy);
       font-size:16px;
     }
 
-    /* Final CTA */
-    .final{
-      text-align:center;
-      margin-top:34px;
-      padding:26px 14px 0;
-    }
-    .final h3{
-      font-size:24px;
-      margin:0 0 14px;
-      letter-spacing:-.01em;
-    }
-    .note{
-      text-align:center;
-      margin-top:18px;
-      color:var(--muted2);
-      font-size:14px;
-    }
-
     /* Footer */
-    .footer{
-      margin-top:32px;
-      padding-top:18px;
-      border-top:1px solid rgba(233,237,242,.9);
+    footer{
+      padding:34px 0 40px;
+      color:rgba(15,23,42,.55);
+      font-size:13px;
+    }
+    .footerRow{
       display:flex;
       justify-content:space-between;
-      align-items:center;
-      color:var(--muted2);
-      font-size:12.5px;
-      gap:10px;
+      gap:14px;
       flex-wrap:wrap;
+      align-items:center;
+      border-top:1px solid rgba(15,23,42,.08);
+      padding-top:16px;
     }
 
     /* Responsive */
     @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .heroVisual{ min-height: 210px; }
-      .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .split{ grid-template-columns: 1fr; }
-      h1{ font-size:40px; }
+      .heroGrid{grid-template-columns:1fr}
+      .heroInner{grid-template-columns:1fr}
+      .noteCard{min-height:auto}
+      .heroCard{min-height:auto}
+      .pillars{grid-template-columns:repeat(2, minmax(0,1fr))}
     }
     @media (max-width: 520px){
-      .grid{ grid-template-columns: 1fr; }
-      h1{ font-size:34px; }
-      .navlinks{ display:none; }
+      h1{font-size:36px}
+      .pillars{grid-template-columns:1fr}
+      .menu{display:none}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-
-    <header class="nav">
-      <div class="brand" aria-label="Gradient Growth">
-        <div class="mark" aria-hidden="true"></div>
+  <div class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <img src="logo.png" alt="Gradient Growth logo" onerror="this.style.display='none'">
         <span>Gradient Growth</span>
-      </div>
+      </a>
 
-      <nav class="navlinks" aria-label="Primary navigation">
+      <div class="menu">
         <a href="#framework">Framework</a>
         <a href="#approach">Approach</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
 
       <a class="cta" href="#contact">Schedule a Call</a>
-    </header>
-
-    <main>
-      <!-- HERO -->
-      <section class="hero" id="top">
-        <div class="heroCard">
-          <p class="kicker">Executive Advisory</p>
-          <h1>Converge Finance &amp; People Strategy for Growth</h1>
-          <p class="subhead">Integrating finance, leadership, and culture to drive measurable business performance.</p>
-          <p class="micro">Where strategy and culture align.</p>
-
-          <div class="heroActions">
-            <a class="cta" href="#contact">Schedule a Discovery Conversation</a>
-            <a class="ghost" href="#framework">Explore the Framework</a>
-          </div>
-        </div>
-
-        <div class="heroVisual" role="img" aria-label="Abstract advisory visual">
-          <div class="visualText">
-            Premium, executive-ready guidance—built for leaders who need clarity, alignment, and measurable outcomes.
-          </div>
-        </div>
-      </section>
-
-      <!-- FRAMEWORK -->
-      <section class="section" id="framework">
-        <div class="sectionHeader">
-          <h2>The Gradient Growth Framework</h2>
-          <p class="tagline">Independent capabilities. Integrated impact.</p>
-        </div>
-
-        <div class="grid" role="list">
-          <a class="card" href="capability-organizational-alignment.html" role="listitem" aria-label="Explore Organizational Alignment">
-            <div class="icon" aria-hidden="true"></div>
-            <h3>Organizational Alignment</h3>
-            <p>Strengthening alignment between leadership, strategy, and culture to accelerate business outcomes and foster inclusion and belonging.</p>
-            <div class="explore">Explore Capability <span class="arrow" aria-hidden="true">→</span></div>
-          </a>
-
-          <a class="card" href="capability-workforce-architecture.html" role="listitem" aria-label="Explore Workforce Architecture">
-            <div class="icon" aria-hidden="true"></div>
-            <h3>Workforce Architecture</h3>
-            <p>Designing the full employee lifecycle to ensure the right roles, processes, and programs support strategic goals.</p>
-            <div class="explore">Explore Capability <span class="arrow" aria-hidden="true">→</span></div>
-          </a>
-
-          <a class="card" href="capability-finance-workforce-integration.html" role="listitem" aria-label="Explore Finance–Workforce Integration">
-            <div class="icon" aria-hidden="true"></div>
-            <h3>Finance–Workforce Integration</h3>
-            <p>Connecting workforce strategy to financial performance to ensure ROI on talent and resources.</p>
-            <div class="explore">Explore Capability <span class="arrow" aria-hidden="true">→</span></div>
-          </a>
-
-          <a class="card" href="capability-leadership-performance.html" role="listitem" aria-label="Explore Leadership & Organizational Performance">
-            <div class="icon" aria-hidden="true"></div>
-            <h3>Leadership &amp; Organizational Performance</h3>
-            <p>Building leadership capability to reinforce culture, engagement, and measurable business impact.</p>
-            <div class="explore">Explore Capability <span class="arrow" aria-hidden="true">→</span></div>
-          </a>
-
-          <a class="card" href="capability-operational-effectiveness.html" role="listitem" aria-label="Explore Operational Effectiveness">
-            <div class="icon" aria-hidden="true"></div>
-            <h3>Operational Effectiveness</h3>
-            <p>Optimizing operating models, governance, and execution discipline to sustain performance and enable growth.</p>
-            <div class="explore">Explore Capability <span class="arrow" aria-hidden="true">→</span></div>
-          </a>
-        </div>
-      </section>
-
-      <!-- APPROACH / CREDIBILITY -->
-      <section class="split section" id="approach">
-        <div class="panel">
-          <h3>Drive Measurable Change with a Partner Who Gets Business</h3>
-          <p>Focused, senior-level support to align strategy, leadership, and the operating model—so decisions translate into performance.</p>
-        </div>
-
-        <div class="panel">
-          <p class="panelTitle">Finance-backed executive advisor aligning culture and performance</p>
-          <p>Cross-functional experience across global organizations in tech, financial services, and publishing—connecting strategy, operating models, and workforce decisions to measurable outcomes.</p>
-          <a class="ghost" href="#contact">Start with a discovery conversation</a>
-        </div>
-      </section>
-
-      <!-- FINAL CTA -->
-      <section class="final" id="contact">
-        <h3>Ready to explore where impact matters most?</h3>
-        <a class="cta" href="mailto:gradientgrowth@outlook.com?subject=Discovery%20Conversation%20Request">Schedule a Discovery Conversation</a>
-        <div class="note">Client partnerships and case highlights coming soon.</div>
-      </section>
-
-      <footer class="footer" aria-label="Footer">
-        <div>© <span id="year"></span> Gradient Growth LLC</div>
-        <div><a href="#top">Back to top</a></div>
-      </footer>
-    </main>
+    </div>
   </div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <main class="wrap">
+    <section class="hero" id="top">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="heroInner">
+            <div>
+              <h1>Converge Finance &amp; People Strategy for Growth</h1>
+              <div class="headlineUnderline"></div>
+              <p class="sub">Integrating finance, leadership, and culture to drive measurable business performance.</p>
+              <p class="sub2">Where strategy and culture align.</p>
+
+              <div class="heroActions">
+                <a class="btnPrimary" href="#contact">Schedule a Discovery Conversation</a>
+                <a class="btnSecondary" href="#framework">Explore the Framework</a>
+              </div>
+            </div>
+
+            <div class="heroImage" aria-label="Executive meeting image"></div>
+          </div>
+        </div>
+
+        <div class="noteCard">
+          <p><strong>Premium, executive-ready guidance</strong>—built for leaders who need clarity, alignment, and measurable outcomes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section center" id="framework">
+      <h2>The Gradient Growth Framework</h2>
+      <div class="tag">Independent capabilities. Integrated impact.</div>
+
+      <div class="pillars">
+        <a class="pillar" href="capability-organizational-alignment.html" aria-label="Explore Organizational Alignment">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 18V6" stroke="rgba(47,111,143,.95)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M4 6h10l6 6v6H4" stroke="rgba(11,31,51,.9)" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M8 10h8" stroke="rgba(200,169,106,.9)" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Organizational Alignment</h3>
+          <p>Strengthening alignment between leadership, strategy, and culture to accelerate business outcomes.</p>
+          <div class="explore">Explore Capability <span>→</span></div>
+        </a>
+
+        <a class="pillar" href="capability-workforce-architecture.html" aria-label="Explore Workforce Architecture">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 7h10v10H7z" stroke="rgba(11,31,51,.9)" stroke-width="1.6"/>
+              <path d="M4 12h3M17 12h3" stroke="rgba(47,111,143,.95)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M12 4v3M12 17v3" stroke="rgba(200,169,106,.9)" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Workforce Architecture</h3>
+          <p>Designing the full employee lifecycle to ensure the right roles, processes, and programs support strategy.</p>
+          <div class="explore">Explore Capability <span>→</span></div>
+        </a>
+
+        <a class="pillar" href="capability-finance-workforce.html" aria-label="Explore Finance–Workforce Integration">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M6 15c2 2 4 3 6 3s4-1 6-3" stroke="rgba(47,111,143,.95)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M6 9c2-2 4-3 6-3s4 1 6 3" stroke="rgba(11,31,51,.9)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M12 6v12" stroke="rgba(200,169,106,.9)" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Finance–Workforce Integration</h3>
+          <p>Connecting workforce strategy to financial performance to ensure ROI on talent and resources.</p>
+          <div class="explore">Explore Capability <span>→</span></div>
+        </a>
+
+        <a class="pillar" href="capability-leadership-performance.html" aria-label="Explore Leadership & Organizational Performance">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3l2.2 4.7L19 8.3l-3.5 3.4.9 4.8L12 14.8 7.6 16.5l.9-4.8L5 8.3l4.8-.6L12 3z"
+                    stroke="rgba(11,31,51,.9)" stroke-width="1.3" fill="none"/>
+              <path d="M6 20h12" stroke="rgba(47,111,143,.95)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M9 20v-3M15 20v-3" stroke="rgba(200,169,106,.9)" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Leadership &amp; Organizational Performance</h3>
+          <p>Building leadership capability to reinforce culture, engagement, and measurable business impact.</p>
+          <div class="explore">Explore Capability <span>→</span></div>
+        </a>
+
+        <a class="pillar" href="capability-operational-effectiveness.html" aria-label="Explore Operational Effectiveness">
+          <div class="ic">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 12h16" stroke="rgba(11,31,51,.9)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M7 8h10" stroke="rgba(47,111,143,.95)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M9 16h6" stroke="rgba(200,169,106,.9)" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Operational Effectiveness</h3>
+          <p>Optimizing operating models, governance, and execution discipline to sustain performance.</p>
+          <div class="explore">Explore Capability <span>→</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="band center" id="approach">
+      <div class="ctaBand">
+        <div>
+          <strong>Ready to explore where impact matters most?</strong><br/>
+          <span style="color:rgba(15,23,42,.62); font-weight:600;">Chart a path to sustainable growth—built for leaders who want results.</span>
+        </div>
+        <a class="btnPrimary" href="#contact">Schedule a Discovery Conversation</a>
+      </div>
+
+      <div style="text-align:center; margin-top:14px; color:rgba(15,23,42,.52); font-size:13.5px; font-weight:650;">
+        Client partnerships and case highlights coming soon.
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div style="height:10px"></div>
+      <h2 style="text-align:center;">Contact</h2>
+      <div class="tag" style="text-align:center;">Email: <span style="color:var(--navy); font-weight:800;">gradientgrowth@outlook.com</span></div>
+      <div style="height:14px"></div>
+    </section>
+
+    <footer>
+      <div class="footerRow">
+        <div>© 2024 Gradient Growth LLC</div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#top">Home</a>
+          <a href="#framework">Framework</a>
+          <a href="#approach">Approach</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </main>
 </body>
 </html>

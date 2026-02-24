@@ -88,13 +88,13 @@
       min-width: 240px;
     }
 
-    /* logo mark: slightly bigger, less tile-y */
+    /* Logo mark (slightly larger for presence) */
     .mark{
       display:flex;
       align-items:center;
       justify-content:center;
-      height:56px;
-      width:56px;
+      height:60px;             /* was 56 */
+      width:60px;              /* was 56 */
       border-radius:16px;
       background: rgba(255,255,255,.22);
       border: 1px solid rgba(7,26,43,.10);
@@ -104,7 +104,7 @@
       backdrop-filter: blur(6px);
     }
     .mark img{
-      height:50px;
+      height:54px;             /* was 50 */
       width:auto;
       display:block;
     }
@@ -384,7 +384,7 @@
       box-shadow: var(--shadow2);
       padding:22px;
       display:grid;
-      grid-template-columns:108px 1fr;
+      grid-template-columns:116px 1fr; /* was 108px */
       gap:18px;
       align-items:center;
       position:relative;
@@ -401,7 +401,7 @@
     .founderBand > *{position:relative;}
 
     .headshot{
-      width:108px;height:108px;border-radius:999px;
+      width:116px;height:116px;border-radius:999px; /* was 108px */
       border:1px solid rgba(7,26,43,.12);
       box-shadow: 0 12px 26px rgba(7,26,43,.10);
       background: #fff;
@@ -529,8 +529,8 @@
       .pillars{grid-template-columns:1fr}
       .menu{display:none}
       .brandText .tagline{display:none}
-      .mark{height:48px;width:48px}
-      .mark img{height:44px}
+      .mark{height:52px;width:52px}    /* was 48 */
+      .mark img{height:48px}           /* was 44 */
       .founderBand{grid-template-columns:1fr; text-align:left;}
       .waveUnderline{width:210px}
     }
@@ -580,7 +580,8 @@
                     stroke-linecap="round" opacity="0.95"/>
             </svg>
 
-            <p class="sub">Integrating finance, leadership, and culture to drive measurable business performance.</p>
+            <!-- UPDATED HERO SUBHEADLINE -->
+            <p class="sub">Connecting workforce strategy to financial outcomes—so leaders can prioritize and execute with clarity.</p>
 
             <div class="heroActions">
               <a class="btnPrimary" href="#contact">Schedule a Discovery Conversation</a>
@@ -595,7 +596,8 @@
                   <svg class="proofIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <path d="M5 12l4 4L19 6" stroke="rgba(42,127,166,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                  Finance-to-workforce alignment
+                  <!-- LOCKED OUTCOME #1 -->
+                  Workforce and investment alignment to strategic priorities
                 </div>
 
                 <div class="proofItem">
@@ -603,7 +605,8 @@
                     <path d="M12 3v18" stroke="rgba(200,169,106,.9)" stroke-width="2" stroke-linecap="round"/>
                     <path d="M5 10l7-7 7 7" stroke="rgba(10,34,54,.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
-                  Culture + leadership performance
+                  <!-- LOCKED OUTCOME #2 -->
+                  Elevated leadership and workforce performance
                 </div>
 
                 <div class="proofItem">
@@ -611,7 +614,8 @@
                     <path d="M4 18V6h16v12H4z" stroke="rgba(10,34,54,.9)" stroke-width="2" />
                     <path d="M8 12h8" stroke="rgba(76,201,214,.95)" stroke-width="2" stroke-linecap="round"/>
                   </svg>
-                  Decision clarity &amp; operating cadence
+                  <!-- LOCKED OUTCOME #3 -->
+                  Decision clarity and operating cadence
                 </div>
               </div>
             </div>
@@ -636,7 +640,8 @@
             </svg>
           </div>
           <h3>Organizational Alignment</h3>
-          <p>Strengthen alignment between leadership, strategy, and culture to accelerate outcomes.</p>
+          <!-- LOCKED PILLAR #1 -->
+          <p>Strengthen alignment across strategy, leadership, and culture to accelerate execution and enterprise performance.</p>
           <div class="explore">Explore Capability <span>→</span></div>
         </a>
 
@@ -649,7 +654,8 @@
             </svg>
           </div>
           <h3>Workforce Architecture</h3>
-          <p>Design the employee lifecycle so roles, processes, and programs support strategy and equity.</p>
+          <!-- LOCKED PILLAR #2 -->
+          <p>Design the workforce ecosystem so roles, processes, and talent investments fully support strategic priorities and scalable growth.</p>
           <div class="explore">Explore Capability <span>→</span></div>
         </a>
 
@@ -662,7 +668,8 @@
             </svg>
           </div>
           <h3>Finance–Workforce Integration</h3>
-          <p>Connect workforce strategy to financial performance to strengthen ROI and resource allocation.</p>
+          <!-- LOCKED PILLAR #3 -->
+          <p>Connect workforce strategy to financial outcomes to strengthen ROI, investment clarity, and resource alignment.</p>
           <div class="explore">Explore Capability <span>→</span></div>
         </a>
 
@@ -676,7 +683,8 @@
             </svg>
           </div>
           <h3>Leadership &amp; Organizational Performance</h3>
-          <p>Build leadership capability that reinforces culture, engagement, and measurable business impact.</p>
+          <!-- LOCKED PILLAR #4 -->
+          <p>Build leadership capability and operating discipline that reinforce culture, engagement, and measurable business results.</p>
           <div class="explore">Explore Capability <span>→</span></div>
         </a>
 
@@ -689,7 +697,8 @@
             </svg>
           </div>
           <h3>Operational Effectiveness</h3>
-          <p>Optimize operating models, governance, and execution discipline to sustain performance.</p>
+          <!-- LOCKED PILLAR #5 -->
+          <p>Optimize operating models, governance, and decision flows to improve execution, focus, and sustainable performance.</p>
           <div class="explore">Explore Capability <span>→</span></div>
         </a>
       </div>
@@ -721,8 +730,9 @@
         <a class="btnPrimary" href="#contact">Schedule a Discovery Conversation</a>
       </div>
 
+      <!-- UPDATED CREDIBILITY LINE (replaces “coming soon”) -->
       <div style="text-align:center; margin-top:14px; color:rgba(15,23,42,.56); font-size:13.5px; font-weight:900;">
-        Client partnerships and case highlights coming soon.
+        Selected experience includes enterprise workforce transformation, finance–talent alignment, and leadership performance initiatives across technology, financial services, and media organizations.
       </div>
     </section>
 
@@ -732,7 +742,8 @@
         <div class="tag" style="margin:0;">For inquiries and discovery conversations:</div>
 
         <div class="contactActions">
-          <a class="btnPrimary" href="#contact">Schedule via Calendly</a>
+          <!-- TIP: Replace # with your Calendly link when ready -->
+          <a class="btnPrimary" href="#">Schedule via Calendly</a>
           <a class="emailPill" href="mailto:gradientgrowth@outlook.com">gradientgrowth@outlook.com</a>
         </div>
 

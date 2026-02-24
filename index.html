@@ -30,9 +30,13 @@
       --max: 1120px;
       --ring: 0 0 0 4px rgba(76,201,214,.18);
 
-      /* Soft borders to reduce “boxiness” */
       --border: rgba(7,26,43,.08);
       --border2: rgba(7,26,43,.06);
+
+      /* warmth knobs */
+      --washGold: rgba(200,169,106,.26);
+      --washTeal: rgba(76,201,214,.22);
+      --washTealDeep: rgba(42,127,166,.14);
     }
 
     *{box-sizing:border-box}
@@ -44,9 +48,9 @@
       font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(1100px 520px at 12% 8%, rgba(200,169,106,.20), transparent 62%),
-        radial-gradient(900px 520px at 88% 12%, rgba(76,201,214,.16), transparent 60%),
-        radial-gradient(760px 420px at 50% 0%, rgba(42,127,166,.08), transparent 62%),
+        radial-gradient(1100px 520px at 12% 8%, var(--washGold), transparent 62%),
+        radial-gradient(900px 520px at 88% 12%, var(--washTeal), transparent 60%),
+        radial-gradient(760px 420px at 50% 0%, rgba(42,127,166,.10), transparent 62%),
         linear-gradient(180deg, #fbfaf7 0%, #f6f7fb 42%, #ffffff 100%);
     }
 
@@ -75,8 +79,8 @@
       content:"";
       display:block;
       height:3px;
-      background: linear-gradient(90deg, rgba(200,169,106,.45), rgba(76,201,214,.55));
-      opacity:.50;
+      background: linear-gradient(90deg, rgba(200,169,106,.55), rgba(76,201,214,.60));
+      opacity:.55;
     }
 
     .nav{
@@ -91,13 +95,13 @@
       min-width: 240px;
     }
 
-    /* Logo mark — keep simple so it doesn’t read as a “tile” */
+    /* Logo mark — floating (no tile) */
     .mark{
       display:flex;
       align-items:center;
       justify-content:center;
-      height:60px;
-      width:60px;
+      height:62px;
+      width:62px;
       border-radius:16px;
       background: transparent;
       border: none;
@@ -107,7 +111,7 @@
       backdrop-filter: none;
     }
     .mark img{
-      height:56px;
+      height:58px;
       width:auto;
       display:block;
     }
@@ -122,17 +126,16 @@
     .brandText .tagline{
       font-size:12.5px;
       color:rgba(15,23,42,.54);
-      font-weight:600; /* reduced from 750 for premium tone */
+      font-weight:600;
       margin-top:4px;
       letter-spacing:.02em;
     }
 
-    /* Reduce boldness in nav for boutique feel */
     .menu{
       display:flex; align-items:center; gap:10px;
       color:rgba(15,23,42,.72);
       font-size:14px;
-      font-weight:700; /* was 850 */
+      font-weight:700;
     }
     .menu a{
       padding:8px 12px;
@@ -149,7 +152,7 @@
       display:inline-flex; align-items:center; justify-content:center;
       padding:10px 14px;
       border-radius:999px;
-      border:1px solid var(--border);
+      border:1px solid rgba(7,26,43,.08);
       background:linear-gradient(180deg, #ffffff 0%, #f2f5f9 100%);
       color:rgba(10,34,54,.98);
       box-shadow:0 12px 24px rgba(7,26,43,.10);
@@ -162,11 +165,11 @@
     .cta:focus{outline:none; box-shadow: var(--ring), 0 12px 24px rgba(7,26,43,.10);}
 
     /* Hero */
-    .hero{ padding:54px 0 14px; } /* more breathing room */
+    .hero{ padding:54px 0 14px; }
 
     .heroCard{
       background: var(--card);
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.05);
       border-radius:28px;
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -176,15 +179,24 @@
       content:"";
       position:absolute; inset:0;
       background:
-        radial-gradient(820px 340px at 12% 8%, rgba(200,169,106,.16), transparent 60%),
-        radial-gradient(820px 340px at 92% 18%, rgba(76,201,214,.12), transparent 60%),
+        radial-gradient(820px 340px at 12% 8%, rgba(200,169,106,.18), transparent 60%),
+        radial-gradient(820px 340px at 92% 18%, rgba(76,201,214,.14), transparent 60%),
         linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.00));
+      pointer-events:none;
+    }
+    /* soft fade out under hero so next section transitions (less blocky) */
+    .heroCard::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-1px;
+      height:54px;
+      background:linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.72));
       pointer-events:none;
     }
 
     .heroInner{
       position:relative;
-      padding:40px 36px 36px; /* less blocky */
+      padding:40px 36px 36px;
       display:grid;
       grid-template-columns: 1.15fr .85fr;
       gap:26px;
@@ -239,8 +251,8 @@
       display:inline-flex; align-items:center; justify-content:center;
       padding:12px 16px;
       border-radius:14px;
-      background:rgba(255,255,255,.92);
-      border:1px solid var(--border);
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(7,26,43,.08);
       box-shadow:0 10px 22px rgba(7,26,43,.08);
       color:rgba(10,34,54,.98);
       font-weight:800;
@@ -254,7 +266,7 @@
     .proofWrap{
       margin-top:22px;
       padding-top:18px;
-      border-top:1px solid var(--border2);
+      border-top:1px solid rgba(7,26,43,.06);
     }
     .proofLabel{
       font-size:12px;
@@ -275,24 +287,24 @@
       gap:10px;
       padding:10px 12px;
       border-radius:14px;
-      background: rgba(255,255,255,.70);
-      border:1px solid var(--border2);
+      background: rgba(255,255,255,.68);
+      border:1px solid rgba(7,26,43,.05);
       box-shadow: 0 8px 18px rgba(7,26,43,.06);
       font-size:13.5px;
       color:rgba(15,23,42,.72);
-      font-weight:700; /* was 900 */
+      font-weight:700;
     }
     .proofIcon{width:18px;height:18px; display:block;}
 
     .heroImage{
       border-radius:22px;
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.06);
       overflow:hidden;
       height:310px;
       background:
-        linear-gradient(0deg, rgba(7,26,43,.30), rgba(7,26,43,.10)),
-        radial-gradient(700px 280px at 30% 20%, rgba(200,169,106,.14), transparent 62%),
-        radial-gradient(700px 280px at 90% 40%, rgba(76,201,214,.14), transparent 62%),
+        linear-gradient(0deg, rgba(7,26,43,.28), rgba(7,26,43,.08)),
+        radial-gradient(700px 280px at 30% 20%, rgba(200,169,106,.16), transparent 62%),
+        radial-gradient(700px 280px at 90% 40%, rgba(76,201,214,.16), transparent 62%),
         url("hero.jpg");
       background-size:cover;
       background-position:center;
@@ -300,7 +312,7 @@
     }
 
     /* Sections */
-    .section{ padding:42px 0 14px; } /* more breathing room */
+    .section{ padding:44px 0 14px; }
     .center{text-align:center;}
     h2{
       margin:0;
@@ -313,7 +325,27 @@
       margin-top:10px;
       color:rgba(15,23,42,.62);
       font-size:15px;
-      font-weight:700; /* was 900 */
+      font-weight:700;
+    }
+
+    /* Framework section “wash” (adds warmth + transition) */
+    #framework{
+      position:relative;
+      isolation:isolate;
+    }
+    #framework::before{
+      content:"";
+      position:absolute;
+      left:-24px; right:-24px;
+      top:-22px;
+      height:240px;
+      background:
+        radial-gradient(720px 240px at 18% 40%, rgba(200,169,106,.18), transparent 62%),
+        radial-gradient(760px 260px at 86% 30%, rgba(76,201,214,.16), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.00), rgba(255,255,255,.00));
+      z-index:-1;
+      pointer-events:none;
+      filter:saturate(1.05);
     }
 
     .pillars{
@@ -324,7 +356,7 @@
     }
     .pillar{
       background: var(--card2);
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.05);
       border-radius:18px;
       box-shadow:0 14px 34px rgba(7,26,43,.08);
       padding:18px 16px 16px;
@@ -348,7 +380,7 @@
     .pillar:hover{
       transform:translateY(-8px);
       box-shadow:0 24px 54px rgba(7,26,43,.12);
-      border-color:rgba(76,201,214,.26);
+      border-color:rgba(76,201,214,.22);
       background: rgba(255,255,255,.985);
     }
 
@@ -368,7 +400,7 @@
       font-size:13.6px;
       line-height:1.58;
       color:rgba(15,23,42,.72);
-      font-weight:600; /* reduced for premium calm */
+      font-weight:600;
     }
     .explore{
       margin-top:auto;
@@ -384,7 +416,7 @@
     .founderBand{
       margin:34px 0 0;
       background: rgba(255,255,255,.84);
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.05);
       border-radius:26px;
       box-shadow: var(--shadow2);
       padding:22px;
@@ -399,15 +431,15 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(760px 240px at 10% 40%, rgba(200,169,106,.10), transparent 60%),
-        radial-gradient(760px 240px at 90% 40%, rgba(76,201,214,.10), transparent 60%);
+        radial-gradient(760px 240px at 10% 40%, rgba(200,169,106,.12), transparent 60%),
+        radial-gradient(760px 240px at 90% 40%, rgba(76,201,214,.12), transparent 60%);
       pointer-events:none;
     }
     .founderBand > *{position:relative;}
 
     .headshot{
       width:116px;height:116px;border-radius:999px;
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.06);
       box-shadow: 0 10px 22px rgba(7,26,43,.08);
       background: #fff;
       overflow:hidden;
@@ -445,7 +477,7 @@
     .band{ margin:26px 0 0; padding:18px 0 0; }
     .ctaBand{
       background: rgba(255,255,255,.84);
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.05);
       border-radius:26px;
       box-shadow: var(--shadow2);
       padding:22px;
@@ -466,7 +498,7 @@
     .contactCard{
       margin-top:14px;
       background: rgba(255,255,255,.84);
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.05);
       border-radius:26px;
       box-shadow: var(--shadow2);
       padding:18px;
@@ -486,7 +518,7 @@
       padding:10px 12px;
       border-radius:14px;
       background: rgba(255,255,255,.74);
-      border:1px solid var(--border2);
+      border:1px solid rgba(7,26,43,.05);
       font-weight:800;
       color:rgba(10,34,54,.98);
     }
@@ -503,7 +535,7 @@
       gap:14px;
       flex-wrap:wrap;
       align-items:center;
-      border-top:1px solid var(--border2);
+      border-top:1px solid rgba(7,26,43,.06);
       padding-top:16px;
       font-weight:600;
     }
